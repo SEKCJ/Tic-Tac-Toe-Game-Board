@@ -7,7 +7,7 @@ div.row > div {
     height: 100px;
     width: 100px;
     float: left;
-    clear: right;
+    clear: right ;
 }
 
 .row {
@@ -29,4 +29,11 @@ div.row > div {
 
 .bottom {
     border-top: 1px black solid;
+}
+
+.cell {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 5.5em;
+    color: green;
+
 }
