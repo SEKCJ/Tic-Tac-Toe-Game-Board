@@ -5,34 +5,35 @@ var id_array = ['','','','','','','','',''];
 var count = 0;
 document.getElementById("wrapper").style.height = "25em";
 document.getElementById("tag").style.display = "none";
-
+let btn = document.querySelector('button');
+btn.addEventListener("click", function(){
+    init()
+}); 
 
 cells.forEach(function(cell) {
     cell.addEventListener("click", cellClicked);
 });
 
 function cellClicked(e) {
-    if (count == 10) {
-        init()
-    } else{
-        x = game_on(e);
-        
-        game = checkgame(x);
-        switch (game) {
-            case true:
-                document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
-                count = 10;
+    if (count !== 10){
+    x = game_on(e);
+    
+    game = checkgame(x);
+    switch (game) {
+        case true:
+            document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
+            change_width()
+            count = 10;
+        case false:
+            if (count == 9) {
+                document.getElementById("tag").innerHTML = "DRAW!";
                 change_width()
-            case false:
-                if (count == 9) {
-                    document.getElementById("tag").innerHTML = "DRAW!";
-                    change_width()
-                    count = 10;
-                } else{
-                    null;
-                }
+                count = 10;
+            } else{
+                null;
             }
     }
+}
 };
 
 function game_on (e) {
@@ -88,7 +89,6 @@ function match_id(e, x_o) {
     return id_array
     
 }
-
 
 function checkrow(a, b, c) {
     result = false;
