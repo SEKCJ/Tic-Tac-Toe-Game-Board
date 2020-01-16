@@ -2,15 +2,9 @@ let cells = document.querySelectorAll('.cell');
 let result = false
 var value = "X";
 var id_array = ['','','','','','','','',''];
-var end_result = "";
-var first = "";
-var second = "";
 var count = 0;
-let start_over = document.querySelectorAll('.row');
-
-/* Ashes.forEach(function(start_over) {
-    start_over.addEventListener("click",init);
-}) */
+document.getElementById("wrapper").style.height = "25em";
+document.getElementById("tag").style.display = "none";
 
 
 cells.forEach(function(cell) {
@@ -18,55 +12,50 @@ cells.forEach(function(cell) {
 });
 
 function cellClicked(e) {
-    x = game_on(e);
-    count = count + 1;
-/* if (e.target.textContent) == 0{
-    e.target.textContent = value;
-    if (value == "X") {
-        value = "O"
+    if (count == 10) {
+        init()
     } else{
-        value = "X";
-    }
-} */
-
-    e.currentTarget.removeEventListener(e.type, arguments.callee);
-    game = checkgame(x);
-
-    if (count%2 == 0){
-        set_val = "O"
-    } else{
-        set_val = "X"
-    }
-    switch (game) {
-        case true:
-            document.getElementById("tag").innerHTML = (`${set_val} Wins!`);
-        case false:
-            if (count == 9){
-                alert("Tie")
-            } else{
-                null;
+        x = game_on(e);
+        
+        game = checkgame(x);
+        switch (game) {
+            case true:
+                document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
+                count = 10;
+                change_width()
+            case false:
+                if (count == 9) {
+                    document.getElementById("tag").innerHTML = "DRAW!";
+                    change_width()
+                    count = 10;
+                } else{
+                    null;
+                }
             }
     }
 };
 
 function game_on (e) {
-    e.currentTarget.textContent = value;
-    x = match_id(e, value);
-    prev_val = value;
-    switch (value) {
-        case "X":
-            value = "O";
-            break;
-        case "O":
+    if (e.currentTarget.textContent == 0) {
+        e.currentTarget.textContent = value;
+        prev_val = value;
+        if (value !== ""){
+            count = count + 1;
+            x = match_id(e, value);
+        } else{
+            count = count+0;
+        }
+        if (value == "X") {
+            value = "O"
+        } else{
             value = "X";
-            break;
-    };
+        }
+    }
     return x
 }
 
 function match_id(e, x_o) {
     id = e.currentTarget.id
-    console.log(id)
     switch (parseInt(id, 10)) {
         case 1:
             id_array[0] = x_o;
@@ -96,7 +85,6 @@ function match_id(e, x_o) {
             id_array[8] = x_o;
             break;
     }
-    console.log(id_array);
     return id_array
     
 }
@@ -114,7 +102,41 @@ function checkrow(a, b, c) {
     return result
 }
 
+function checkgame(combination) {
+    if(
+    (
+    checkrow(combination[0], combination[1], combination[2]) == true ||
+    checkrow(combination[3], combination[4], combination[5]) == true ||
+    checkrow(combination[6], combination[7], combination[8]) == true ||
+    checkrow(combination[0], combination[3], combination[6]) == true ||
+    checkrow(combination[1], combination[4], combination[7]) == true ||
+    checkrow(combination[2], combination[5], combination[8]) == true ||
+    checkrow(combination[0], combination[4], combination[8]) == true ||
+    checkrow(combination[2], combination[4], combination[6]) == true
+    )) {
+        end_result = true;
+        
+
+    } else{
+        end_result = false;
+    }
+    return end_result;
+} 
+
+
 function init(){
+    for (let i = 0; i < 9 ; i++) {
+        document.getElementsByClassName("cell")[i].innerHTML = "";
+    }
     document.getElementById("tag").innerHTML = "";
+    id_array = ['','','','','','','','',''];
+    value = "X";
+    count = 0;
+    document.getElementById("wrapper").style.height = "25em";
+    document.getElementById("tag").style.display = "none";
 }
 
+function change_width() {
+    document.getElementById("wrapper").style.height = "29em";
+    document.getElementById("tag").style.display = "block";
+}
