@@ -2,71 +2,61 @@ let cells = document.querySelectorAll('.cell');
 let result = false
 var value = "X";
 var id_array = ['','','','','','','','',''];
-var end_result = "";
-var first = "";
-var second = "";
 var count = 0;
-let start_over = document.querySelectorAll('.row');
-
-/* Ashes.forEach(function(start_over) {
-    start_over.addEventListener("click",init);
-}) */
-
+document.getElementById("wrapper").style.height = "25em";
+document.getElementById("tag").style.display = "none";
+let btn = document.querySelector('button');
+btn.addEventListener("click", function(){
+    init()
+}); 
 
 cells.forEach(function(cell) {
     cell.addEventListener("click", cellClicked);
 });
 
 function cellClicked(e) {
+    if (count !== 10){
     x = game_on(e);
-    count = count + 1;
-/* if (e.target.textContent) == 0{
-    e.target.textContent = value;
-    if (value == "X") {
-        value = "O"
-    } else{
-        value = "X";
-    }
-} */
-
-    e.currentTarget.removeEventListener(e.type, arguments.callee);
+    
     game = checkgame(x);
-
-    if (count%2 == 0){
-        set_val = "O"
-    } else{
-        set_val = "X"
-    }
     switch (game) {
         case true:
-            document.getElementById("tag").innerHTML = (`${set_val} Wins!`);
+            document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
+            change_width()
+            count = 10;
         case false:
-            if (count == 9){
-                alert("Tie")
+            if (count == 9) {
+                document.getElementById("tag").innerHTML = "DRAW!";
+                change_width()
+                count = 10;
             } else{
                 null;
             }
     }
+}
 };
 
 function game_on (e) {
-    e.currentTarget.textContent = value;
-    x = match_id(e, value);
-    prev_val = value;
-    switch (value) {
-        case "X":
-            value = "O";
-            break;
-        case "O":
+    if (e.currentTarget.textContent == 0) {
+        e.currentTarget.textContent = value;
+        prev_val = value;
+        if (value !== ""){
+            count = count + 1;
+            x = match_id(e, value);
+        } else{
+            count = count+0;
+        }
+        if (value == "X") {
+            value = "O"
+        } else{
             value = "X";
-            break;
-    };
+        }
+    }
     return x
 }
 
 function match_id(e, x_o) {
     id = e.currentTarget.id
-    console.log(id)
     switch (parseInt(id, 10)) {
         case 1:
             id_array[0] = x_o;
@@ -96,11 +86,9 @@ function match_id(e, x_o) {
             id_array[8] = x_o;
             break;
     }
-    console.log(id_array);
     return id_array
     
 }
-
 
 function checkrow(a, b, c) {
     result = false;
@@ -128,16 +116,27 @@ function checkgame(combination) {
     )) {
         end_result = true;
         
-        console.log(end_result);
+
     } else{
         end_result = false;
-        console.log(end_result)
     }
     return end_result;
 } 
 
 
 function init(){
+    for (let i = 0; i < 9 ; i++) {
+        document.getElementsByClassName("cell")[i].innerHTML = "";
+    }
     document.getElementById("tag").innerHTML = "";
+    id_array = ['','','','','','','','',''];
+    value = "X";
+    count = 0;
+    document.getElementById("wrapper").style.height = "25em";
+    document.getElementById("tag").style.display = "none";
 }
 
+function change_width() {
+    document.getElementById("wrapper").style.height = "29em";
+    document.getElementById("tag").style.display = "block";
+}
