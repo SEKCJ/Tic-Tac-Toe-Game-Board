@@ -15,14 +15,15 @@ cells.forEach(function(cell) {
 });
 
 function cellClicked(e) {
+    if (count !== 10){
     x = game_on(e);
     
     game = checkgame(x);
     switch (game) {
         case true:
             document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
-            count = 10;
             change_width()
+            count = 10;
         case false:
             if (count == 9) {
                 document.getElementById("tag").innerHTML = "DRAW!";
@@ -32,6 +33,7 @@ function cellClicked(e) {
                 null;
             }
     }
+}
 };
 
 function game_on (e) {
