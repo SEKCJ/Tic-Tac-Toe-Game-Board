@@ -4,8 +4,8 @@
 
 .border{
     margin: 3em auto;
-    height: 50vh;
-    width: 55vw;
+    height: 25em;
+    width: 25em;
     background-image: url(https://image.freepik.com/free-photo/yellow-blue-paper-texture-background_23-2147981619.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -65,4 +65,8 @@ div.row > div {
     height: 1.25em;
     width: 5em;
     background-color: #0E26B1;
+}
+
+body{
+    background-color: #F1E0B6;
 }

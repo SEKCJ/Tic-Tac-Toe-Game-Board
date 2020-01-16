@@ -3,7 +3,7 @@ let result = false
 var value = "X";
 var id_array = ['','','','','','','','',''];
 var count = 0;
-document.getElementById("wrapper").style.height = "50vh";
+document.getElementById("wrapper").style.height = "25em";
 document.getElementById("tag").style.display = "none";
 
 
@@ -131,11 +131,11 @@ function init(){
     id_array = ['','','','','','','','',''];
     value = "X";
     count = 0;
-    document.getElementById("wrapper").style.height = "50vh";
+    document.getElementById("wrapper").style.height = "25em";
     document.getElementById("tag").style.display = "none";
 }
 
 function change_width() {
-    document.getElementById("wrapper").style.height = "60vh";
+    document.getElementById("wrapper").style.height = "29em";
     document.getElementById("tag").style.display = "block";
 }
