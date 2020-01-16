@@ -3,7 +3,8 @@ let result = false
 var value = "X";
 var id_array = ['','','','','','','','',''];
 var count = 0;
-
+document.getElementById("wrapper").style.height = "50vh";
+document.getElementById("tag").style.display = "none";
 
 
 cells.forEach(function(cell) {
@@ -21,6 +22,7 @@ function cellClicked(e) {
             case true:
                 document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
                 count = 10;
+                change_width()
             case false:
                 if (count == 9) {
                     document.getElementById("tag").innerHTML = "DRAW!";
@@ -129,5 +131,11 @@ function init(){
     id_array = ['','','','','','','','',''];
     value = "X";
     count = 0;
+    document.getElementById("wrapper").style.height = "50vh";
+    document.getElementById("tag").style.display = "none";
 }
 
+function change_width() {
+    document.getElementById("wrapper").style.height = "60vh";
+    document.getElementById("tag").style.display = "block";
+}

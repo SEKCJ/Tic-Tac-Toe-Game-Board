@@ -1,7 +1,16 @@
 .board {
-    padding-top: 3em;
     text-align: center;
-    
+}
+
+.border{
+    margin: 3em auto;
+    height: 50vh;
+    width: 55vw;
+    background-image: url(https://image.freepik.com/free-photo/yellow-blue-paper-texture-background_23-2147981619.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: .25em;
 }
 
 div.row > div {
@@ -35,6 +44,25 @@ div.row > div {
 .cell {
     font-family: 'Varela Round', sans-serif;
     font-size: 5.5em;
-    color: green;
+    color: #E26313;
 
+}
+
+.title{
+    margin: .25em auto .25em;
+    padding: .25em;
+    width: 7em;
+    border: 2px black solid;
+    border-radius: 1em;
+    background-color: #F4EDCA;
+}
+
+#tag {
+    color: #CBAB58;
+    margin: 0 auto .5em;
+    display: none;
+    padding: .25em;
+    height: 1.25em;
+    width: 5em;
+    background-color: #0E26B1;
 }

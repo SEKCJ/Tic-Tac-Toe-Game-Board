@@ -114,29 +114,6 @@ function checkrow(a, b, c) {
     return result
 }
 
-function checkgame(combination) {
-    if(
-    (
-    checkrow(combination[0], combination[1], combination[2]) == true ||
-    checkrow(combination[3], combination[4], combination[5]) == true ||
-    checkrow(combination[6], combination[7], combination[8]) == true ||
-    checkrow(combination[0], combination[3], combination[6]) == true ||
-    checkrow(combination[1], combination[4], combination[7]) == true ||
-    checkrow(combination[2], combination[5], combination[8]) == true ||
-    checkrow(combination[0], combination[4], combination[8]) == true ||
-    checkrow(combination[2], combination[4], combination[6]) == true
-    )) {
-        end_result = true;
-        
-        console.log(end_result);
-    } else{
-        end_result = false;
-        console.log(end_result)
-    }
-    return end_result;
-} 
-
-
 function init(){
     document.getElementById("tag").innerHTML = "";
 }
