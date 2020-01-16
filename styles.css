@@ -11,6 +11,7 @@
     background-size: cover;
     background-position: center;
     padding-top: .25em;
+    border-radius: 3em;
 }
 
 div.row > div {

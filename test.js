@@ -90,7 +90,7 @@ function match_id(e, x_o) {
     
 }
 
-
+k
 function checkrow(a, b, c) {
     result = false;
     if (a==b && b==c) {
@@ -100,7 +100,7 @@ function checkrow(a, b, c) {
             result = false;
         }
     }
-    return result
+    return resultk
 }
 
 function checkgame(combination) {
