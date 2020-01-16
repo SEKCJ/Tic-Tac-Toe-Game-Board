@@ -26,6 +26,7 @@ function cellClicked(e) {
             case false:
                 if (count == 9) {
                     document.getElementById("tag").innerHTML = "DRAW!";
+                    change_width()
                     count = 10;
                 } else{
                     null;
