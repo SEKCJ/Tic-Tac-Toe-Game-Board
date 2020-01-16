@@ -3,7 +3,7 @@
 }
 
 .border{
-    margin: 3em auto;
+    margin: 3em auto 1em;
     height: 25em;
     width: 25em;
     background-image: url(https://image.freepik.com/free-photo/yellow-blue-paper-texture-background_23-2147981619.jpg);
@@ -69,4 +69,26 @@ div.row > div {
 
 body{
     background-color: #F1E0B6;
+    text-align: center;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5em;
+    padding: 0.5em 2em;
+    cursor: pointer;
+    color: white;
+    border: 7px #831A2B solid;
+    border-radius: 1em;
+    background-color: #A41C2E;
+    -webkit-box-shadow: 21px 17px 29px -7px rgba(0,0,0,0.92);
+    -moz-box-shadow: 21px 17px 29px -7px rgba(0,0,0,0.92);
+    box-shadow: 21px 17px 29px -7px rgba(0,0,0,0.92);
+}
+
+button:active{
+    transform: translateY(4px);
+    -webkit-box-shadow: 18px 13px 29px -7px rgba(0,0,0,0.92);
+    -moz-box-shadow: 18px 13px 29px -7px rgba(0,0,0,0.92);
+    box-shadow: 18px 13px 29px -7px rgba(0,0,0,0.92);
 }
