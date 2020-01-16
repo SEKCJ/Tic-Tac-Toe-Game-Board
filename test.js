@@ -20,7 +20,7 @@ cells.forEach(function(cell) {
 function cellClicked(e) {
     x = game_on(e);
     count = count + 1;
-/* if (e.target.textContent) == 0{
+/* if (e.target.textContent == 0) {
     e.target.textContent = value;
     if (value == "X") {
         value = "O"
@@ -29,44 +29,28 @@ function cellClicked(e) {
     }
 } */
 
-    e.currentTarget.removeEventListener(e.type, arguments.callee);
+/*     e.currentTarget.removeEventListener(e.type, arguments.callee); */
     game = checkgame(x);
 
-    if (count%2 == 0){
-        set_val = "O"
-    } else{
-        set_val = "X"
-    }
-    switch (game) {
-        case true:
-            document.getElementById("tag").innerHTML = (`${set_val} Wins!`);
-        case false:
-            if (count == 9){
-                alert("Tie")
-            } else{
-                null;
-            }
-    }
 };
 
 function game_on (e) {
-    e.currentTarget.textContent = value;
-    x = match_id(e, value);
-    prev_val = value;
-    switch (value) {
-        case "X":
-            value = "O";
-            break;
-        case "O":
+/*     e.currentTarget.textContent = value; */
+
+    if (e.currentTarget.textContent == 0) {
+        e.currentTarget.textContent = value;
+        x = match_id(e, value);
+        if (value == "X") {
+            value = "O"
+        } else{
             value = "X";
-            break;
-    };
+        }
+    }
     return x
 }
 
 function match_id(e, x_o) {
     id = e.currentTarget.id
-    console.log(id)
     switch (parseInt(id, 10)) {
         case 1:
             id_array[0] = x_o;
