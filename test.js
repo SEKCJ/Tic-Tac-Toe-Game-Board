@@ -2,15 +2,8 @@ let cells = document.querySelectorAll('.cell');
 let result = false
 var value = "X";
 var id_array = ['','','','','','','','',''];
-var end_result = "";
-var first = "";
-var second = "";
 var count = 0;
-let start_over = document.querySelectorAll('.row');
 
-/* Ashes.forEach(function(start_over) {
-    start_over.addEventListener("click",init);
-}) */
 
 
 cells.forEach(function(cell) {
@@ -18,28 +11,37 @@ cells.forEach(function(cell) {
 });
 
 function cellClicked(e) {
-    x = game_on(e);
-    count = count + 1;
-/* if (e.target.textContent == 0) {
-    e.target.textContent = value;
-    if (value == "X") {
-        value = "O"
+    if (count == 10) {
+        init()
     } else{
-        value = "X";
+        x = game_on(e);
+        
+        game = checkgame(x);
+        switch (game) {
+            case true:
+                document.getElementById("tag").innerHTML = (`${prev_val} Wins!`);
+                count = 10;
+            case false:
+                if (count == 9) {
+                    document.getElementById("tag").innerHTML = "DRAW!";
+                    count = 10;
+                } else{
+                    null;
+                }
+            }
     }
-} */
-
-/*     e.currentTarget.removeEventListener(e.type, arguments.callee); */
-    game = checkgame(x);
-
 };
 
 function game_on (e) {
-/*     e.currentTarget.textContent = value; */
-
     if (e.currentTarget.textContent == 0) {
         e.currentTarget.textContent = value;
-        x = match_id(e, value);
+        prev_val = value;
+        if (value !== ""){
+            count = count + 1;
+            x = match_id(e, value);
+        } else{
+            count = count+0;
+        }
         if (value == "X") {
             value = "O"
         } else{
@@ -80,7 +82,6 @@ function match_id(e, x_o) {
             id_array[8] = x_o;
             break;
     }
-    console.log(id_array);
     return id_array
     
 }
@@ -112,16 +113,21 @@ function checkgame(combination) {
     )) {
         end_result = true;
         
-        console.log(end_result);
+
     } else{
         end_result = false;
-        console.log(end_result)
     }
     return end_result;
 } 
 
 
 function init(){
+    for (let i = 0; i < 9 ; i++) {
+        document.getElementsByClassName("cell")[i].innerHTML = "";
+    }
     document.getElementById("tag").innerHTML = "";
+    id_array = ['','','','','','','','',''];
+    value = "X";
+    count = 0;
 }
 
